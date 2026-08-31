@@ -36,6 +36,7 @@ Partial Class Form2
         Me.tbxNilaiPraktikum = New System.Windows.Forms.TextBox()
         Me.Label = New System.Windows.Forms.Label()
         Me.buttonHitung = New System.Windows.Forms.Button()
+        Me.buttonReset = New System.Windows.Forms.Button()
         Me.tbxNilaiAkhir = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
         '
@@ -166,10 +167,22 @@ Partial Class Form2
         Me.buttonHitung.ForeColor = System.Drawing.Color.Red
         Me.buttonHitung.Location = New System.Drawing.Point(17, 285)
         Me.buttonHitung.Name = "buttonHitung"
-        Me.buttonHitung.Size = New System.Drawing.Size(520, 47)
+        Me.buttonHitung.Size = New System.Drawing.Size(252, 47)
         Me.buttonHitung.TabIndex = 14
-        Me.buttonHitung.Text = "Hitung dan Tampilkan Nilai Akhir"
+        Me.buttonHitung.Text = "Hitung"
         Me.buttonHitung.UseVisualStyleBackColor = False
+        '
+        'buttonReset
+        '
+        Me.buttonReset.BackColor = System.Drawing.Color.LightCoral
+        Me.buttonReset.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.buttonReset.ForeColor = System.Drawing.Color.White
+        Me.buttonReset.Location = New System.Drawing.Point(285, 285)
+        Me.buttonReset.Name = "buttonReset"
+        Me.buttonReset.Size = New System.Drawing.Size(252, 47)
+        Me.buttonReset.TabIndex = 16
+        Me.buttonReset.Text = "Reset"
+        Me.buttonReset.UseVisualStyleBackColor = False
         '
         'tbxNilaiAkhir
         '
@@ -187,6 +200,7 @@ Partial Class Form2
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(963, 512)
         Me.Controls.Add(Me.tbxNilaiAkhir)
+        Me.Controls.Add(Me.buttonReset)
         Me.Controls.Add(Me.buttonHitung)
         Me.Controls.Add(Me.Label)
         Me.Controls.Add(Me.tbxNilaiPraktikum)
@@ -222,5 +236,6 @@ Partial Class Form2
     Friend WithEvents tbxNilaiPraktikum As TextBox
     Friend WithEvents Label As Label
     Friend WithEvents buttonHitung As Button
+    Friend WithEvents buttonReset As Button
     Friend WithEvents tbxNilaiAkhir As TextBox
 End Class
