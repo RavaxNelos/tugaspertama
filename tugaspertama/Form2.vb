@@ -39,4 +39,13 @@
 
     End Sub
 
+    Private Sub buttonReset_Click(sender As Object, e As EventArgs) Handles buttonReset.Click
+
+        tbxNilaiUTS.Text = "0"
+        tbxNilaiUAS.Text = "0"
+        tbxNilaiPraktikum.Text = "0"
+        tbxNilaiAkhir.Text = "0"
+
+    End Sub
+
 End Class

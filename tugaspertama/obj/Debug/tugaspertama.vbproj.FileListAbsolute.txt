@@ -1,0 +1,13 @@
+D:\github-repo\tugaspertama-main\tugaspertama\bin\Debug\tugaspertama.exe.config
+D:\github-repo\tugaspertama-main\tugaspertama\bin\Debug\tugaspertama.exe
+D:\github-repo\tugaspertama-main\tugaspertama\bin\Debug\tugaspertama.pdb
+D:\github-repo\tugaspertama-main\tugaspertama\bin\Debug\tugaspertama.xml
+D:\github-repo\tugaspertama-main\tugaspertama\obj\Debug\tugaspertama.vbproj.AssemblyReference.cache
+D:\github-repo\tugaspertama-main\tugaspertama\obj\Debug\tugaspertama.Form1.resources
+D:\github-repo\tugaspertama-main\tugaspertama\obj\Debug\tugaspertama.Form2.resources
+D:\github-repo\tugaspertama-main\tugaspertama\obj\Debug\tugaspertama.Resources.resources
+D:\github-repo\tugaspertama-main\tugaspertama\obj\Debug\tugaspertama.vbproj.GenerateResource.cache
+D:\github-repo\tugaspertama-main\tugaspertama\obj\Debug\tugaspertama.vbproj.CoreCompileInputs.cache
+D:\github-repo\tugaspertama-main\tugaspertama\obj\Debug\tugaspertama.exe
+D:\github-repo\tugaspertama-main\tugaspertama\obj\Debug\tugaspertama.xml
+D:\github-repo\tugaspertama-main\tugaspertama\obj\Debug\tugaspertama.pdb
