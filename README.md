@@ -4,6 +4,20 @@ Aplikasi **Penilaian Akhir** (Final Grade Calculator) adalah program desktop ber
 
 ---
 
+## Daftar Fitur
+
+- Input identitas mahasiswa (Nama & NPM) di **Form1**.
+- Menekan **Enter** pada Form1 dapat langsung memindahkan ke Form2 (pengganti klik tombol Next).
+- Navigasi mundur via tombol **Back** di Form2 untuk mengganti Nama/NPM.
+- Input tiga komponen nilai (UTS, UAS, Praktikum) di **Form2**.
+- Perhitungan otomatis **Nilai Akhir** berbobot dengan tombol **Hitung**.
+- Tombol **Reset** untuk mengosongkan kembali nilai dan hasil perhitungan.
+- Field identitas (Nama/NPM) di Form2 bersifat non-editable (berupa Label).
+- Hasil perhitungan bersifat read-only (tidak bisa diedit manual).
+- Urutan navigasi **Tab** yang benar di Form2 (UTS → UAS → Praktikum).
+
+---
+
 ## 1. Penjelasan Setiap Kode dan File
 
 ### Struktur Folder
@@ -11,8 +25,12 @@ Aplikasi **Penilaian Akhir** (Final Grade Calculator) adalah program desktop ber
 ```
 tugaspertama-main/
 |
+|-- .gitignore                       # Aturan file/folder yang dikecualikan dari git
 |-- README.md                        # Dokumentasi proyek (file ini)
 |-- tugaspertama.slnx                # File solusi Visual Studio
+|
+|-- docs/                            # Folder dokumentasi tambahan
+|   |-- changelogs.md                # Riwayat perubahan versi aplikasi
 |
 |-- tugaspertama/                    # Folder utama proyek
 |   |-- tugaspertama.vbproj          # File proyek VB.NET (referensi, konfigurasi build)
@@ -40,7 +58,9 @@ tugaspertama-main/
 |------|--------|
 | **`tugaspertama.vbproj`** | File proyek Visual Basic yang mendefinisikan semua referensi (System, System.Windows.Forms, System.Drawing, dll.), item sumber kode, dan konfigurasi build (Debug/Release). |
 | **`tugaspertama.slnx`** | File solusi Visual Studio yang menghubungkan proyek `tugaspertama.vbproj` ke dalam satu solusi agar bisa dibuka dan di-build dari IDE. |
+| **`.gitignore`** | Menentukan file/folder yang dikecualikan dari repositori git, seperti hasil build (`bin/`, `obj/`), file IDE (`.vs/`, `*.user`), serta log dan file sementara agar tidak ikut ter-commit. |
 | **`App.config`** | Berisi konfigurasi runtime aplikasi, yaitu menentukan dukungan .NET Framework versi 4.7.2. |
+| **`docs/changelogs.md`** | Dokumen yang mencatat seluruh riwayat perubahan aplikasi, dimulai dari versi `0.0.1` hingga versi terbaru. Versi terbaru ditampilkan paling atas. |
 | **`My Project/Application.myapp`** | Konfigurasi aplikasi yang mendeklarasikan **Form1** sebagai *MainForm* (form utama yang pertama muncul saat aplikasi dijalankan), mengaktifkan visual styles, dan mengatur mode single-instance. |
 | **`My Project/AssemblyInfo.vb`** | Metadata assembly aplikasi seperti judul, versi (1.0.0.0), dan nama perusahaan. |
 
@@ -51,17 +71,18 @@ tugaspertama-main/
 - **`txtNama`** — TextBox untuk mengisi nama mahasiswa.
 - **`txtNPM`** — TextBox untuk mengisi NPM mahasiswa.
 - **`buttonNext`** — Tombol hijau untuk melanjutkan ke halaman berikutnya.
+- **`AcceptButton`** — di-set ke `buttonNext`, sehingga menekan **Enter** pada `txtNama`/`txtNPM` langsung memicu tombol Next.
 
-**`Form1.vb`** — Logika dari Form1. Saat tombol **Next** diklik, event handler `buttonNext_Click` akan:
+**`Form1.vb`** — Logika dari Form1. Saat tombol **Next** diklik (atau Enter ditekan), event handler `buttonNext_Click` akan:
 1. Membaca nilai dari `txtNama` dan `txtNPM` sebagai variabel `nama` dan `npm`.
-2. Membuat objek `Form2` baru dengan melewatkan `nama` dan `npm` melalui *constructor* `New Form2(nama, npm)`.
+2. Membuat objek `Form2` baru dengan melewatkan `nama`, `npm`, **dan referensi Form1 (`Me`)** melalui constructor `New Form2(nama, npm, Me)`.
 3. Menampilkan Form2 menggunakan `form2.Show()`.
 4. Menyembunyikan Form1 menggunakan `Me.Hide()`.
 
 ```vb
 Dim nama As String = txtNama.Text
 Dim npm As String = txtNPM.Text
-Dim form2 As New Form2(nama, npm)
+Dim form2 As New Form2(nama, npm, Me)
 form2.Show()
 Me.Hide()
 ```
@@ -69,22 +90,25 @@ Me.Hide()
 ### Form2 (Form Input Nilai dan Perhitungan)
 
 **`Form2.Designer.vb`** — Mendefinisikan tata letak UI Form2, yaitu:
-- **`tbxNama`** dan **`tbxNPM`** — TextBox untuk menampilkan nama dan NPM yang diterima dari Form1 (hanya sebagai tampilan/konfirmasi).
+- **`lblNama`** dan **`lblNPM`** — **Label** (teks biasa) untuk menampilkan nama dan NPM yang diterima dari Form1. Berupa Label sehingga **tidak bisa diklik, dipilih, atau diedit** oleh user.
 - **`tbxNilaiUTS`** — TextBox untuk mengisi Nilai UTS (default "0", rata kanan).
 - **`tbxNilaiUAS`** — TextBox untuk mengisi Nilai UAS (default "0", rata kanan).
 - **`tbxNilaiPraktikum`** — TextBox untuk mengisi Nilai Praktikum (default "0", rata kanan).
 - **Label rumus** — Menampilkan rumus: `(0.3*Nilai UTS)+(0.3*Nilai UAS)+(0.4*Nilai Praktikum)`.
 - **`buttonHitung`** — Tombol "Hitung" untuk menghitung nilai akhir.
 - **`buttonReset`** — Tombol "Reset" untuk mengosongkan kembali nilai-nilai.
-- **`tbxNilaiAkhir`** — TextBox besar (font 72pt, rata tengah) untuk menampilkan hasil Nilai Akhir.
+- **`buttonBack`** — Tombol "Back" untuk kembali ke Form1.
+- **`tbxNilaiAkhir`** — TextBox besar (font 72pt, rata tengah) untuk menampilkan hasil Nilai Akhir, di-set **ReadOnly** sehingga tidak bisa diedit manual.
+- Setiap field nilai memiliki urutan **TabIndex** yang benar (UTS → UAS → Praktikum); field identitas tidak dapat menerima fokus Tab (TabStop nonaktif).
 
-**`Form2.vb`** — Logika dari Form2. Ada dua *constructor*:
+**`Form2.vb`** — Logika dari Form2. Terdapat *constructor*:
 - `Public Sub New()` — constructor biasa (tanpa parameter).
-- `Public Sub New(nama As String, npm As String)` — constructor yang menerima nama dan NPM dari Form1, lalu mengisinya ke `tbxNama` dan `tbxNPM`.
+- `Public Sub New(nama As String, npm As String, form1Ref As Form1)` — constructor yang menerima nama, NPM, dan referensi Form1, lalu mengisinya ke `lblNama` dan `lblNPM` serta menyimpan referensi Form1.
 
 Terdapat deklarasi variabel level kelas:
 ```vb
 Dim uts, uas, praktikum, nilaiAkhir As Double
+Private form1 As Form1
 ```
 
 **Event handler `buttonHitung_Click`** (perhitungan nilai akhir):
@@ -131,7 +155,7 @@ Nilai Akhir = (0.3 x 80) + (0.3 x 90) + (0.4 x 85)
 
 ## 2. Penjelasan Mengenai Tombol Reset
 
-Tombol **Reset** (`buttonReset`) adalah fitur tambahan yang dibuat agar pengguna dapat mengosongkan kembali seluruh nilai yang sudah diisi **setelah** melakukan perhitungan nilai akhir. Dengan tombol ini, pengguna tidak perlu menghapus satu per satu nilai secara manual, sehingga lebih cepat dan praktis jika ingin menghitung ulang dengan data yang baru.
+Tombol **Reset** (`buttonReset`) adalah fitur yang dibuat agar pengguna dapat mengosongkan kembali seluruh nilai yang sudah diisi **setelah** melakukan perhitungan nilai akhir. Dengan tombol ini, pengguna tidak perlu menghapus satu per satu nilai secara manual, sehingga lebih cepat dan praktis jika ingin menghitung ulang dengan data yang baru.
 
 ### Cara Kerja Tombol Reset
 
@@ -157,7 +181,36 @@ Perlu diperhatikan bahwa tombol **Reset** hanya mengosongkan **nilai-nilai input
 
 ---
 
-## 3. Done, tinggal dijadikan laporan berbentuk pdf, taruh teks ketiga ini di readmenya, tidak usah di ubah khusus yang ini
+## 3. Penjelasan Mengenai Tombol Back
+
+Tombol **Back** (`buttonBack`) adalah fitur yang memungkinkan pengguna untuk **kembali dari Form2 ke Form1** agar dapat mengganti/mengisi ulang Nama dan NPM mahasiswa. Tombol ini terletak di pojok kanan atas Form2.
+
+### Cara Kerja Tombol Back
+
+Agar bisa kembali ke Form1, Form2 perlu mengetahui instans Form1 yang sedang menampilkannya. Karena itu, Form1 melewatkan referensi dirinya sendiri (`Me`) melalui constructor:
+
+```vb
+Dim form2 As New Form2(nama, npm, Me)
+```
+
+Form2 menyimpan referensi tersebut di variabel `form1`:
+```vb
+Private form1 As Form1
+```
+
+Saat tombol **Back** diklik, event handler `buttonBack_Click` menutup Form2 dan menampilkan kembali Form1:
+```vb
+Private Sub buttonBack_Click(sender As Object, e As EventArgs) Handles buttonBack.Click
+    Me.Close()
+    form1.Show()
+End Sub
+```
+
+Dengan cara ini, Form1 yang sama (yang berisi nilai Nama/NPM sebelumnya) ditampilkan kembali, sehingga pengguna dapat mengedit/isi ulang identitas lalu menekan Next lagi.
+
+---
+
+## 4. Done, tinggal dijadikan laporan berbentuk pdf, taruh teks ketiga ini di readmenya, tidak usah di ubah khusus yang ini
 
 Berikut adalah langkah-langkah untuk menjadikan README ini menjadi laporan berbentuk PDF:
 

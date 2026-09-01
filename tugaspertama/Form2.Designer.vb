@@ -29,14 +29,15 @@ Partial Class Form2
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.tbxNama = New System.Windows.Forms.TextBox()
+        Me.lblNama = New System.Windows.Forms.Label()
         Me.tbxNilaiUTS = New System.Windows.Forms.TextBox()
-        Me.tbxNPM = New System.Windows.Forms.TextBox()
+        Me.lblNPM = New System.Windows.Forms.Label()
         Me.tbxNilaiUAS = New System.Windows.Forms.TextBox()
         Me.tbxNilaiPraktikum = New System.Windows.Forms.TextBox()
         Me.Label = New System.Windows.Forms.Label()
         Me.buttonHitung = New System.Windows.Forms.Button()
         Me.buttonReset = New System.Windows.Forms.Button()
+        Me.buttonBack = New System.Windows.Forms.Button()
         Me.tbxNilaiAkhir = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
         '
@@ -107,12 +108,15 @@ Partial Class Form2
         Me.Label8.TabIndex = 7
         Me.Label8.Text = "Nilai Praktikum"
         '
-        'tbxNama
+        'lblNama
         '
-        Me.tbxNama.Location = New System.Drawing.Point(184, 25)
-        Me.tbxNama.Name = "tbxNama"
-        Me.tbxNama.Size = New System.Drawing.Size(383, 22)
-        Me.tbxNama.TabIndex = 8
+        Me.lblNama.AutoSize = True
+        Me.lblNama.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblNama.Location = New System.Drawing.Point(184, 27)
+        Me.lblNama.Name = "lblNama"
+        Me.lblNama.Size = New System.Drawing.Size(0, 25)
+        Me.lblNama.TabIndex = 8
+        Me.lblNama.TabStop = False
         '
         'tbxNilaiUTS
         '
@@ -123,12 +127,15 @@ Partial Class Form2
         Me.tbxNilaiUTS.Text = "0"
         Me.tbxNilaiUTS.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
-        'tbxNPM
+        'lblNPM
         '
-        Me.tbxNPM.Location = New System.Drawing.Point(184, 63)
-        Me.tbxNPM.Name = "tbxNPM"
-        Me.tbxNPM.Size = New System.Drawing.Size(383, 22)
-        Me.tbxNPM.TabIndex = 10
+        Me.lblNPM.AutoSize = True
+        Me.lblNPM.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblNPM.Location = New System.Drawing.Point(184, 65)
+        Me.lblNPM.Name = "lblNPM"
+        Me.lblNPM.Size = New System.Drawing.Size(0, 25)
+        Me.lblNPM.TabIndex = 10
+        Me.lblNPM.TabStop = False
         '
         'tbxNilaiUAS
         '
@@ -184,11 +191,24 @@ Partial Class Form2
         Me.buttonReset.Text = "Reset"
         Me.buttonReset.UseVisualStyleBackColor = False
         '
+        'buttonBack
+        '
+        Me.buttonBack.BackColor = System.Drawing.Color.LightGray
+        Me.buttonBack.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.buttonBack.ForeColor = System.Drawing.Color.Black
+        Me.buttonBack.Location = New System.Drawing.Point(468, 22)
+        Me.buttonBack.Name = "buttonBack"
+        Me.buttonBack.Size = New System.Drawing.Size(85, 30)
+        Me.buttonBack.TabIndex = 17
+        Me.buttonBack.Text = "Back"
+        Me.buttonBack.UseVisualStyleBackColor = False
+        '
         'tbxNilaiAkhir
         '
         Me.tbxNilaiAkhir.Font = New System.Drawing.Font("Microsoft Sans Serif", 72.0!)
         Me.tbxNilaiAkhir.Location = New System.Drawing.Point(17, 338)
         Me.tbxNilaiAkhir.Name = "tbxNilaiAkhir"
+        Me.tbxNilaiAkhir.ReadOnly = True
         Me.tbxNilaiAkhir.Size = New System.Drawing.Size(520, 143)
         Me.tbxNilaiAkhir.TabIndex = 15
         Me.tbxNilaiAkhir.Text = "0"
@@ -198,16 +218,17 @@ Partial Class Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(963, 512)
+        Me.ClientSize = New System.Drawing.Size(570, 500)
         Me.Controls.Add(Me.tbxNilaiAkhir)
+        Me.Controls.Add(Me.buttonBack)
         Me.Controls.Add(Me.buttonReset)
         Me.Controls.Add(Me.buttonHitung)
         Me.Controls.Add(Me.Label)
         Me.Controls.Add(Me.tbxNilaiPraktikum)
         Me.Controls.Add(Me.tbxNilaiUAS)
-        Me.Controls.Add(Me.tbxNPM)
+        Me.Controls.Add(Me.lblNPM)
         Me.Controls.Add(Me.tbxNilaiUTS)
-        Me.Controls.Add(Me.tbxNama)
+        Me.Controls.Add(Me.lblNama)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Label6)
@@ -229,13 +250,14 @@ Partial Class Form2
     Friend WithEvents Label6 As Label
     Friend WithEvents Label7 As Label
     Friend WithEvents Label8 As Label
-    Friend WithEvents tbxNama As TextBox
+    Friend WithEvents lblNama As Label
     Friend WithEvents tbxNilaiUTS As TextBox
-    Friend WithEvents tbxNPM As TextBox
+    Friend WithEvents lblNPM As Label
     Friend WithEvents tbxNilaiUAS As TextBox
     Friend WithEvents tbxNilaiPraktikum As TextBox
     Friend WithEvents Label As Label
     Friend WithEvents buttonHitung As Button
     Friend WithEvents buttonReset As Button
+    Friend WithEvents buttonBack As Button
     Friend WithEvents tbxNilaiAkhir As TextBox
 End Class

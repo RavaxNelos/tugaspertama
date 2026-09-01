@@ -11,3 +11,7 @@ D:\github-repo\tugaspertama-main\tugaspertama\obj\Debug\tugaspertama.vbproj.Core
 D:\github-repo\tugaspertama-main\tugaspertama\obj\Debug\tugaspertama.exe
 D:\github-repo\tugaspertama-main\tugaspertama\obj\Debug\tugaspertama.xml
 D:\github-repo\tugaspertama-main\tugaspertama\obj\Debug\tugaspertama.pdb
+C:\Users\maman\AppData\Local\Temp\opencode\buildcheck4\tugaspertama.exe.config
+C:\Users\maman\AppData\Local\Temp\opencode\buildcheck4\tugaspertama.exe
+C:\Users\maman\AppData\Local\Temp\opencode\buildcheck4\tugaspertama.pdb
+C:\Users\maman\AppData\Local\Temp\opencode\buildcheck4\tugaspertama.xml

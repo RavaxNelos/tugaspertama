@@ -1,5 +1,55 @@
+# Visual Studio
 .vs/
-bin/
-obj/
 *.user
 *.suo
+*.userosscache
+*.sln.docstates
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Bb]in/
+[Oo]bj/
+[Aa]rtifacts/
+
+# MSBuild
+*.log
+[Ll]og/
+*.binlog
+
+# Test results
+[Tt]est[Rr]esult*/
+*.trx
+*.coverage
+*.coveragexml
+*.coveragex
+*.nunit
+
+# Publish outputs
+*.publish.xml
+*.pubxml
+*.pubxml.user
+
+# NuGet
+*.nupkg
+*.snupkg
+.nuget/
+packages/
+
+# Misc
+*.pdb
+*.db
+*.dbmdl
+*.ds_store
+*.swp
+*.tmp
+*~
