@@ -11,7 +11,7 @@
         Dim nama As String = txtNama.Text
         Dim npm As String = txtNPM.Text
 
-        Dim form2 As New Form2(nama, npm)
+        Dim form2 As New Form2(nama, npm, Me)
         form2.Show()
 
         Me.Hide()

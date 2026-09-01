@@ -6,11 +6,19 @@
     End Sub
 
     'Constructor untuk menerima Nama dan NPM dari Form1
-    Public Sub New(nama As String, npm As String)
+    Public Sub New(nama As String, npm As String, form1Ref As Form1)
         InitializeComponent()
 
-        tbxNama.Text = nama
-        tbxNPM.Text = npm
+        lblNama.Text = nama
+        lblNPM.Text = npm
+        form1 = form1Ref
+    End Sub
+
+    Private form1 As Form1
+
+    Private Sub buttonBack_Click(sender As Object, e As EventArgs) Handles buttonBack.Click
+        Me.Close()
+        form1.Show()
     End Sub
 
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
